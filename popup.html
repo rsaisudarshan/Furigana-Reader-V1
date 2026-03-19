@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --primary: #2563eb; /* Vibrant True Blue */
+            --bg-body: #eff6ff; /* Soft icy blue background */
+            --bg-card: #ffffff; /* Pure white cards */
+            --text-main: #1e3a8a; /* Deep navy blue for text */
+            --text-muted: #64748b; /* Slate blue for subtitles */
+            --border: #dbeafe; /* Light blue borders */
+        }
+        
+        body {
+            width: 320px;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+        
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+        }
+        
+        .header-text h1 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .header-text p {
+            margin: 2px 0 0 0;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* Content Wrapper */
+        .content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        /* Card Styles for Info Box and Settings */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        /* Specific Info Box Tweaks */
+        .info-card {
+            border-left: 4px solid var(--primary);
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+        }
+        
+        .info-card p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+        
+        .info-card .jp {
+            font-size: 12px;
+            color: var(--primary);
+            margin-top: 8px;
+            display: block;
+            opacity: 0.9;
+        }
+        
+        .setting-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .label-col {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        
+        /* Modern Toggle Switch */
+        .switch { 
+            position: relative; 
+            display: inline-block; 
+            width: 44px; 
+            height: 24px; 
+            flex-shrink: 0;
+        }
+        
+        .switch input { 
+            opacity: 0; 
+            width: 0; 
+            height: 0; 
+        }
+        
+        .slider { 
+            position: absolute; 
+            cursor: pointer; 
+            top: 0; left: 0; right: 0; bottom: 0; 
+            background-color: #cbd5e1; 
+            transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1); 
+            border-radius: 24px; 
+        }
+        
+        .slider:before { 
+            position: absolute; 
+            content: ""; 
+            height: 18px; 
+            width: 18px; 
+            left: 3px; 
+            bottom: 3px; 
+            background-color: white; 
+            transition: .3s cubic-bezier(0.4, 0.0, 0.2, 1); 
+            border-radius: 50%; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        input:checked + .slider { background-color: var(--primary); }
+        input:checked + .slider:before { transform: translateX(20px); }
+        
+        /* Footer */
+        .footer {
+            padding: 12px 16px 16px 16px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .footer strong {
+            color: var(--text-main);
+        }
+        
+        .footer-subtext {
+            color: #94a3b8;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="icons/active.png" alt="Furigana Logo">
+        <div class="header-text">
+            <h1>Furigana Reader</h1>
+            <p>ふりがなリーダー</p>
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="card info-card">
+            <p>Automatically generates furigana above Kanji to assist with reading web pages.</p>
+            <span class="jp">漢字の上に自動的にふりがなを追加して、ウェブサイトの読み方をサポートします。</span>
+        </div>
+        
+        <div class="card setting-card">
+            <div class="label-col">
+                <span class="title">Enable Furigana (有効化)</span>
+                <span class="subtitle">Reloads tab when toggled on/off.</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="toggleSwitch">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="footer">
+        <strong>Developed by R Sai Sudarshan</strong><br>
+        <span class="footer-subtext">Powered by Kuroshiro & Kuromoji</span>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
